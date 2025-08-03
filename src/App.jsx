@@ -7,10 +7,24 @@ import { logo } from "./assets";
 
 function App() {
   const [data, setData] = useState(DATA);
+  const [food, setFood] = useState();
+  const [cart, setCart] = useState([]);
 
   const handleDelete = (food) => {
     setData(data.filter((item) => item.food !== food));
-    console.log(data);
+  };
+
+  const handleAdd = (event) => {
+    const foundFood = data.find(
+      (item) => item.food.toLowerCase() === event.toLowerCase()
+    );
+
+    setFood(foundFood);
+  };
+
+  const handleAddToCart = () => {
+    setCart([...cart, food]);
+    setFood(null);
   };
 
   return (
@@ -18,20 +32,27 @@ function App() {
       <div className="section">
         <img src={logo} alt="This is logo" className="logo" />
         <div className="input">
-          <input className="search" type="text" placeholder="Add food" />
+          <input
+            onChange={(e) => handleAdd(e.target.value)}
+            className="search"
+            type="text"
+            placeholder="Add food"
+          />
         </div>
         <ul className="list">
-          {data.map((item) => (
-            <li key={item.id}>
+          {food ? (
+            <li>
               <div>
-                <h2>{item.food}</h2>
-                <span>{item.price} so'm</span>
+                <h2>{food.food}</h2>
+                <span>{food.price}</span>
               </div>
-              <button onClick={() => handleDelete(item.food)}>
-                <IoClose />
+              <button className="add_btn">
+                <FaPlus />
               </button>
             </li>
-          ))}
+          ) : (
+            <h2 className="no_food">Find Foods</h2>
+          )}
         </ul>
       </div>
     </section>

@@ -78,6 +78,15 @@
   color: #333;
 }
 
+.section .no_food{
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+
 .section .list li div span{
   font-size: 1rem;
   text-transform: unset;
@@ -85,7 +94,7 @@
   color: #333;
 }
 
-.section .list li button{
+.section .list li .add_btn{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +102,7 @@
   height: 2rem;
   border-radius: 50%;
   border: none;
-  background-color: #e20b0b;
+  background-color: #12e712;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
